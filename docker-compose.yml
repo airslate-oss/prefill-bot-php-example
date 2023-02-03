@@ -1,0 +1,23 @@
+version: '3'
+services:
+    app:
+        build:
+            context: docker/8.0
+            dockerfile: Dockerfile
+        image: airslate-oss/prefill-bot-php-example
+        ports:
+            - '8080:80'
+        environment:
+             XDEBUG_MODE: coverage
+        volumes:
+            - '.:/app'
+
+    setup:
+        profiles: ["setup"]
+        build:
+            context: docker/8.0
+            dockerfile: Dockerfile
+        image: airslate-oss/prefill-bot-php-example
+        command: bash -c "composer install && cp .env.example .env && php artisan key:generate --ansi"
+        volumes:
+            - '.:/app'

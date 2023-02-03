@@ -1,0 +1,45 @@
+{
+    "data": {
+        "type": "bot_resources",
+        "attributes": {
+            "settings": [
+                {
+                    "name": "json_file",
+                    "type": "attachment",
+                    "data": {
+                        "file_id": "9388F146-1000-0000-0000AE67",
+                        "file_name": "example.json",
+                        "file_size": 388
+                    }
+                }
+            ],
+            "setting_name": "entity_types"
+        },
+        "relationships": {
+            "bot_setup": {
+                "data": {
+                    "id": "9DF8A7BA-9400-0000-000093F0",
+                    "type": "bot_setups"
+                }
+            },
+            "template": {
+                "data": {
+                    "id": "24662D75-C100-0000-0000BA29",
+                    "type": "templates"
+                }
+            },
+            "template_version": {
+                "data": {
+                    "id": "F711A909-C100-0000-000049B7",
+                    "type": "template_versions"
+                }
+            },
+            "organization": {
+                "data": {
+                    "id": "B4D7ED3A-F000-0000-0000D981",
+                    "type": "organizations"
+                }
+            }
+        }
+    }
+}

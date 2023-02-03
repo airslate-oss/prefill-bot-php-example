@@ -1,0 +1,89 @@
+name: "Build & Test"
+
+on: push
+
+jobs:
+  main:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.0'
+      - name: Set Docker Tags
+        run: |
+          echo "TEST_TAG=prefill-from-json-bot:${ACTION_REF//\//_}_${GITHUB_SHA}" >> $GITHUB_ENV
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v2
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+      - name: Cache Docker layers
+        uses: actions/cache@v3
+        with:
+          path: /tmp/.buildx-cache
+          key: ${{ runner.os }}-buildx-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-buildx-
+      - name: Build Test Image
+        uses: docker/build-push-action@v3
+        with:
+          push: false
+          load: true
+          context: ./docker/8.0
+          tags: ${{ env.TEST_TAG }}
+          cache-from: type=local,src=/tmp/.buildx-cache
+          cache-to: type=local,dest=/tmp/.buildx-cache-new
+      - name: Move buildx cache
+        run: |
+          rm -rf /tmp/.buildx-cache
+          mv /tmp/.buildx-cache-new /tmp/.buildx-cache
+      - name: Composer Dev Vendor Cache
+        uses: actions/cache@v3
+        with:
+          path: dev_vendor_cache
+          key: composer-vendor-dev-${{ hashFiles('composer.lock') }}
+          restore-keys: |
+            composer-vendor-dev-${{ hashFiles('composer.lock') }}
+            composer-vendor-dev-
+      - name: Restore composer cache to vendor
+        run: |
+          mkdir -p dev_vendor_cache
+          mv dev_vendor_cache vendor
+          rm -rf dev_vendor_cache
+      - name: Composer Install Dev
+        run: |
+          docker run --rm \
+            -v "$(pwd):/app" \
+            "${TEST_TAG}" \
+            composer install -n --prefer-dist --no-scripts
+      - name: Test Pint
+        run: |
+          docker run --rm \
+            -v "$(pwd):/app" \
+            -v "$(pwd)/.env.ci:/app/.env" \
+            "${TEST_TAG}" \
+            ./vendor/bin/pint --test
+      - name: Test PHPStan
+        run: |
+          docker run --rm \
+            -v "$(pwd):/app" \
+            -v "$(pwd)/.env.ci:/app/.env" \
+            "${TEST_TAG}" \
+            ./vendor/bin/phpstan analyse -c phpstan.neon
+      - name: Test PHPMD
+        run: |
+          docker run --rm \
+            -v "$(pwd):/app" \
+            -v "$(pwd)/.env.ci:/app/.env" \
+            "${TEST_TAG}" \
+            ./vendor/bin/phpmd ./app text codesize
+      - name: Test PHPUnit
+        run: |
+          docker run --rm \
+            -v "$(pwd):/app" \
+            -v "$(pwd)/.env.ci:/app/.env" \
+            "${TEST_TAG}" \
+            ./vendor/bin/phpunit
+      - name: Save composer dev vendor for caching
+        run: cp -R vendor dev_vendor_cache

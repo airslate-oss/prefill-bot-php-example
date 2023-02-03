@@ -1,0 +1,20 @@
+{
+    "data": [
+        {
+            "id": "users",
+            "type": "bot_setup_variants",
+            "attributes": {
+                "name": "users",
+                "icon_type": "text"
+            }
+        },
+        {
+            "id": "products",
+            "type": "bot_setup_variants",
+            "attributes": {
+                "name": "products",
+                "icon_type": "text"
+            }
+        }
+    ]
+}

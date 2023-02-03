@@ -1,0 +1,37 @@
+{
+    "name": "airslate-oss/prefill-bot-php-example",
+    "type": "project",
+    "description": "Prefill from JSON airSlate Bot",
+    "keywords": ["airSlate", "bot"],
+    "license": "Apache-2.0",
+    "require": {
+        "php": "^8.0",
+        "guzzlehttp/guzzle": "^7.2",
+        "laravel/framework": "^9.19",
+        "laravel/tinker": "^2.7"
+    },
+    "require-dev": {
+        "laravel/pint": "^1.0",
+        "nunomaduro/collision": "^6.1",
+        "phpmd/phpmd": "^2.13",
+        "phpstan/phpstan": "^1.9",
+        "phpunit/phpunit": "^9.5.10"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}

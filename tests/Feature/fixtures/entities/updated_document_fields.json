@@ -1,0 +1,40 @@
+[
+    {
+        "id": "9135BA97-1410-0000-000021F6-0001",
+        "type": "fields:text",
+        "attributes": {
+            "name": "name",
+            "triggers": [],
+            "group": null,
+            "order": 1,
+            "value": "James",
+            "display_value": null,
+            "field_access_options": {
+                "is_roleable": true,
+                "is_required": false,
+                "is_hidden": false,
+                "is_readonly": false,
+                "is_data_writing_allowed": true
+            }
+        }
+    },
+    {
+        "id": "9135BA97-1410-0000-000021F6-0002",
+        "type": "fields:text",
+        "attributes": {
+            "name": "lastname",
+            "triggers": [],
+            "group": null,
+            "order": 2,
+            "value": "Jordan",
+            "display_value": null,
+            "field_access_options": {
+                "is_roleable": true,
+                "is_required": false,
+                "is_hidden": false,
+                "is_readonly": false,
+                "is_data_writing_allowed": true
+            }
+        }
+    }
+]
