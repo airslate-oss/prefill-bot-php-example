@@ -1,0 +1,13 @@
+version: '3'
+services:
+    app:
+        build:
+            context: docker/8.0
+            dockerfile: Dockerfile
+        image: prefill-from-json-bot/app
+        ports:
+            - '8080:80'
+        environment:
+             XDEBUG_MODE: coverage
+        volumes:
+            - '.:/app'

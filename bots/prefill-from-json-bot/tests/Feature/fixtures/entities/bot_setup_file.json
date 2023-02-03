@@ -1,0 +1,24 @@
+{
+    "users": [
+        {
+            "id": 1,
+            "name": "John",
+            "lastname": "Smith"
+        },
+        {
+            "id": 2,
+            "name": "James",
+            "lastname": "Jordan"
+        }
+    ],
+    "products": [
+        {
+            "id": 1,
+            "price": 230
+        },
+        {
+            "id": 2,
+            "price": 110
+        }
+    ]
+}

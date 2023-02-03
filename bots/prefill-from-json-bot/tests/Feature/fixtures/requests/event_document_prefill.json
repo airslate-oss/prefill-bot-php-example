@@ -1,0 +1,298 @@
+{
+    "data": {
+        "type": "trigger_document_prefill",
+        "relationships": {
+            "bot_setup": {
+                "data": {
+                    "id": "716EC1CA-9400-0000-000093F0",
+                    "type": "bot_setups"
+                }
+            },
+            "revision": {
+                "data": {
+                    "id": "93B6CD13-5C00-0000-00005363",
+                    "type": "revisions"
+                }
+            }
+        }
+    },
+    "included": [
+        {
+            "id": "761D7445-7100-0000-00009BC6",
+            "type": "users",
+            "attributes": {
+                "email": "test@test",
+                "username": "test.test",
+                "first_name": "test",
+                "last_name": "test",
+                "created_at": "2020-04-15T12:07:21Z",
+                "updated_at": "2022-12-21T12:47:44Z"
+            }
+        },
+        {
+            "id": "B7D1AD75-C100-0000-0000BA29",
+            "type": "templates",
+            "attributes": {
+                "name": "test example bot",
+                "created_at": "2023-01-17T16:27:23Z",
+                "updated_at": "2023-01-17T16:28:19Z"
+            },
+            "relationships": {
+                "author": {
+                    "data": {
+                        "type": "users",
+                        "id": "761D7445-7100-0000-00009BC6"
+                    }
+                },
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "B4D7ED3A-F000-0000-0000D981"
+                    }
+                },
+                "latest_version": {
+                    "data": {
+                        "id": "F6F05A09-C100-0000-000049B7",
+                        "type": "template_versions"
+                    }
+                }
+            }
+        },
+        {
+            "id": "716EC1CA-9400-0000-000093F0",
+            "type": "bot_setups",
+            "attributes": {
+                "name": "Enter Bot description",
+                "status": "ACTIVE",
+                "settings": [
+                    {
+                        "name": "json_file",
+                        "type": "attachment",
+                        "data": {
+                            "file_id": "9388F146-1000-0000-0000AE67",
+                            "file_name": "example.json",
+                            "file_size": 388
+                        }
+                    },
+                    {
+                        "name": "entity_type",
+                        "type": "choice",
+                        "data": {
+                            "label": "users",
+                            "value": "users"
+                        }
+                    },
+                    {
+                        "name": "mapping",
+                        "type": "mapping",
+                        "data": [
+                            {
+                                "left_group": {
+                                    "type": "input",
+                                    "data": "users"
+                                },
+                                "right_group": {
+                                    "type": "choice",
+                                    "data": {
+                                        "label": "html form 2",
+                                        "value": "9135BA97-1410-0000-000021F6"
+                                    }
+                                },
+                                "mapping": [
+                                    {
+                                        "left_element": {
+                                            "type": "choice",
+                                            "data": {
+                                                "label": "name",
+                                                "value": "name"
+                                            }
+                                        },
+                                        "right_element": {
+                                            "type": "choice",
+                                            "data": {
+                                                "label": "name",
+                                                "value": "name"
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "left_element": {
+                                            "type": "choice",
+                                            "data": {
+                                                "label": "lastname",
+                                                "value": "lastname"
+                                            }
+                                        },
+                                        "right_element": {
+                                            "type": "choice",
+                                            "data": {
+                                                "label": "lastname",
+                                                "value": "lastname"
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "name": "matching",
+                        "type": "mapping",
+                        "data": [
+                            {
+                                "left_group": {
+                                    "type": "input",
+                                    "data": "users"
+                                },
+                                "right_group": {
+                                    "type": "textarea",
+                                    "data": "2"
+                                },
+                                "mapping": [
+                                    {
+                                        "left_element": {
+                                            "type": "choice",
+                                            "data": {
+                                                "label": "id",
+                                                "value": "id"
+                                            }
+                                        },
+                                        "right_element": null
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "name": "tags",
+                        "type": "tags",
+                        "data": [
+                            "Prefill from JSON"
+                        ]
+                    }
+                ],
+                "options": {
+                    "skip_on_fail": false,
+                    "run_once": false
+                },
+                "conditions": [
+                    {
+                        "type": "group",
+                        "logic": "or",
+                        "value": [
+                            {
+                                "type": "group",
+                                "logic": "and",
+                                "value": [
+                                    {
+                                        "type": "condition",
+                                        "scope": "fillable_fields",
+                                        "field_identifier": "29745497-1410-0000-000021F6:id",
+                                        "field_type": "text",
+                                        "operator": "not_empty",
+                                        "value": null,
+                                        "system": false
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ],
+                "created_at": "2023-01-17T16:28:47Z",
+                "updated_at": "2023-01-17T16:29:29Z"
+            },
+            "relationships": {
+                "template": {
+                    "data": {
+                        "id": "B7D1AD75-C100-0000-0000BA29",
+                        "type": "templates"
+                    }
+                },
+                "template_version": {
+                    "data": {
+                        "id": "F6F05A09-C100-0000-000049B7",
+                        "type": "template_versions"
+                    }
+                },
+                "parent": {
+                    "data": null
+                }
+            }
+        },
+        {
+            "id": "93B6CD13-5C00-0000-00005363",
+            "type": "revisions",
+            "attributes": {
+                "status": "DRAFT",
+                "created_at": "2023-01-17T16:30:06Z",
+                "updated_at": "2023-01-17T16:30:08Z"
+            },
+            "relationships": {
+                "flow": {
+                    "data": {
+                        "id": "A342E082-6A00-0000-0000C9C1",
+                        "type": "flows"
+                    }
+                },
+                "author": {
+                    "data": {
+                        "type": "users",
+                        "id": "761D7445-7100-0000-00009BC6"
+                    }
+                },
+                "step": {
+                    "data": {
+                        "id": "B6C0BBD1-0D10-0000-0000055A",
+                        "type": "flow_steps"
+                    }
+                }
+            }
+        },
+        {
+            "id": "A342E082-6A00-0000-0000C9C1",
+            "type": "flows",
+            "attributes": {
+                "name": "Test Test's test example bot Slate",
+                "is_test": false,
+                "created_at": "2023-01-17T16:29:56Z",
+                "updated_at": "2023-01-17T16:30:06Z",
+                "additional_data": null
+            },
+            "relationships": {
+                "author": {
+                    "data": {
+                        "type": "users",
+                        "id": "761D7445-7100-0000-00009BC6"
+                    }
+                },
+                "template": {
+                    "data": {
+                        "id": "B7D1AD75-C100-0000-0000BA29",
+                        "type": "templates"
+                    }
+                },
+                "template_version": {
+                    "data": {
+                        "id": "F6F05A09-C100-0000-000049B7",
+                        "type": "template_versions"
+                    }
+                }
+            }
+        },
+        {
+            "id": "B6C0BBD1-0D10-0000-0000055A",
+            "type": "flow_steps",
+            "attributes": {
+                "name": "Step 1"
+            },
+            "relationships": {
+                "template": {
+                    "data": {
+                        "id": "158D1090-C200-0000-0000DF6A",
+                        "type": "template_steps"
+                    }
+                }
+            }
+        }
+    ]
+}

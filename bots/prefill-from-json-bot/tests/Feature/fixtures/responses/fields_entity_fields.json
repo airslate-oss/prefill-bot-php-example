@@ -1,0 +1,28 @@
+{
+    "data": [
+        {
+            "id": "id",
+            "type": "bot_setup_variants",
+            "attributes": {
+                "name": "id",
+                "icon_type": "column"
+            }
+        },
+        {
+            "id": "name",
+            "type": "bot_setup_variants",
+            "attributes": {
+                "name": "name",
+                "icon_type": "column"
+            }
+        },
+        {
+            "id": "lastname",
+            "type": "bot_setup_variants",
+            "attributes": {
+                "name": "lastname",
+                "icon_type": "column"
+            }
+        }
+    ]
+}
